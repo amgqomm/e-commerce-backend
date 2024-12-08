@@ -1,4 +1,16 @@
 package com.ecommerce.entity;
 
-public class ProductImage {
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "product_images")
+public class ProductImages {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long imgId;
+    private String imageUrl;
+    private Long productId;
 }
