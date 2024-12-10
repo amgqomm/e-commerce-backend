@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This DTO class represents the structure of request and response data,
+ * including status code, error message, user credentials, token details, and user information.
+ */
+
 package com.ecommerce.dto;
 
 import com.ecommerce.entity.User;

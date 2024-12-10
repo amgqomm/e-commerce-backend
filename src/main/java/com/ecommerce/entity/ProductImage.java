@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This entity class represents a product image in the e-commerce application,
+ * containing details such as the image URL and the associated product ID.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;

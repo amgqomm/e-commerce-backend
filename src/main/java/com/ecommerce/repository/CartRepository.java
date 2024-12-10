@@ -1,3 +1,11 @@
+/**
+ * @author Khanjinguur A.
+ *
+ * @description This repository interface provides CRUD operations for managing cart entities.
+ * It extends JpaRepository to leverage built-in methods for entity persistence.
+ * Additionally, it declares a custom query method to find a cart that has not been ordered.
+ */
+
 package com.ecommerce.repository;
 
 import com.ecommerce.entity.Cart;

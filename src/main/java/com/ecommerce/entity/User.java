@@ -1,3 +1,10 @@
+/**
+ * @authot Enkh-Amgalan G.
+ *
+ * @description This entity class represents a user in the e-commerce application. It implements
+ * the `UserDetails` interface from Spring Security to provide user-related information required for authentication.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;

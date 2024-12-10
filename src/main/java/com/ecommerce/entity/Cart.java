@@ -1,3 +1,9 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This entity class represents a shopping cart, which includes the cart ID, order status, and its associated cart details.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;

@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This entity class represents an order in the system, including its details,
+ * order date, and shipping information.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;
