@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This entity class represents the details of a product within a shopping cart,
+ * including the product itself, its quantity, and the associated cart.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;

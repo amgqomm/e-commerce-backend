@@ -1,3 +1,10 @@
+/**
+ * @authur Enkh-Amgalan G.
+ *
+ * @description This service class manages operations related to the shopping cart, including adding/removing items,
+ * ordering items, and retrieving cart information. It uses various repositories to interact with the database.
+ */
+
 package com.ecommerce.service;
 
 import com.ecommerce.dto.CartDTO;
@@ -8,7 +15,6 @@ import com.ecommerce.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +37,11 @@ public class CartService {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
+    /**
+     * Retrieve the active cart. If no active cart exists, create a new one.
+     *
+     * @return the active Cart object.
+     */
     public Cart getActiveCart() {
         Cart cart = cartRepository.findByIsOrderedFalse();
         if (cart == null) {
@@ -41,6 +52,12 @@ public class CartService {
         return cart;
     }
 
+    /**
+     * Add a product to the active cart.
+     *
+     * @param productId The ID of the product to add.
+     * @param quantity  The quantity of the product to add.
+     */
     public void addToCart(Long productId, Double quantity) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
@@ -52,6 +69,11 @@ public class CartService {
         cartDetailRepository.save(cartDetail);
     }
 
+    /**
+     * Delete a product from the active cart.
+     *
+     * @param productId The ID of the product to delete.
+     */
     public void deleteCartItem(Long productId) {
         Cart cart = getActiveCart();
         CartDetail cartDetail = cartDetailRepository.findByCartAndProductId(cart, productId)
@@ -59,6 +81,12 @@ public class CartService {
         cartDetailRepository.delete(cartDetail);
     }
 
+    /**
+     * Place an order for the items in the active cart.
+     *
+     * @param orderDTO The details of the order to be placed.
+     * @return the created Order object.
+     */
     @Transactional
     public Order orderCart(OrderDTO orderDTO) {
         Cart cart = getActiveCart();
@@ -89,6 +117,11 @@ public class CartService {
         return order;
     }
 
+    /**
+     * Retrieve the active cart as a CartDTO.
+     *
+     * @return the CartDTO representation of the active cart.
+     */
     public CartDTO getActiveCartDTO() {
         Cart cart = getActiveCart();
         CartDTO cartDTO = new CartDTO();

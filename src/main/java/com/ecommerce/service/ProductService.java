@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This service class handles business logic for managing products and their images.
+ * It uses `ProductRepository` and `ProductImageRepository` to interact with the database for product and product image operations.
+ */
+
 package com.ecommerce.service;
 
 import com.ecommerce.dto.ProductDTO;
@@ -24,6 +31,11 @@ public class ProductService {
     @Autowired
     private ProductImageRepository productImageRepository;
 
+    /**
+     * Fetches the top-rated products from the database.
+     *
+     * @return a list of top-rated ProductDTOs.
+     */
     public List<ProductDTO> getTopRatedProducts() {
         List<Product> products = productRepository.findTop6ByOrderByRatingDesc();
         List<ProductDTO> returnProducts = new ArrayList<>();
@@ -33,6 +45,11 @@ public class ProductService {
         return returnProducts;
     }
 
+    /**
+     * Fetches all products from the database.
+     *
+     * @return a list of all ProductDTOs.
+     */
     public List<ProductDTO> getAllProducts() {
         List<Product> products = productRepository.findAll();
         List<ProductDTO> returnProducts = new ArrayList<>();
@@ -42,6 +59,12 @@ public class ProductService {
         return returnProducts;
     }
 
+    /**
+     * Saves a new product and its associated images to the database.
+     *
+     * @param productDTO the ProductDTO containing product details.
+     * @return the saved Product entity.
+     */
     @Transactional
     public Product saveProduct(ProductDTO productDTO) {
         Product product = new Product();
@@ -68,6 +91,12 @@ public class ProductService {
         return product;
     }
 
+    /**
+     * Retrieves the details of a specific product.
+     *
+     * @param productId the ID of the product.
+     * @return a ProductDTO containing product details and associated image URLs.
+     */
     public ProductDTO getProductDetails(Long productId) {
         Product product = productRepository.findById(productId).orElse(null);
         if (product == null) {

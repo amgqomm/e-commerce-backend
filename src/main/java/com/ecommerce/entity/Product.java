@@ -1,3 +1,10 @@
+/**
+ * @author Enkh-Amgalan G.
+ *
+ * @description This entity class represents a product in the e-commerce application,
+ * containing details such as its name, price, category, and other attributes.
+ */
+
 package com.ecommerce.entity;
 
 import jakarta.persistence.*;
