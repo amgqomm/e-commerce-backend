@@ -44,13 +44,13 @@ public class UserService {
         RequestResponseDTO resp = new RequestResponseDTO();
 
         try {
-            User ourUser = new User();
-            ourUser.setEmail(registrationRequest.getEmail());
-            ourUser.setCity(registrationRequest.getCity());
-            ourUser.setRole(registrationRequest.getRole());
-            ourUser.setName(registrationRequest.getName());
-            ourUser.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
-            User ourUsersResult = userRepository.save(ourUser);
+            User user = new User();
+            user.setEmail(registrationRequest.getEmail());
+            user.setCity(registrationRequest.getCity());
+            user.setRole(registrationRequest.getRole());
+            user.setName(registrationRequest.getName());
+            user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+            User ourUsersResult = userRepository.save(user);
             if (ourUsersResult.getId()>0) {
                 resp.setOurUsers((ourUsersResult));
                 resp.setMessage("User Saved Successfully");
