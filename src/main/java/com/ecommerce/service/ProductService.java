@@ -51,12 +51,12 @@ public class ProductService {
      * @return a list of all ProductDTOs.
      */
     public List<ProductDTO> getAllProducts() {
-        List<Product> products = productRepository.findAll();
-        List<ProductDTO> returnProducts = new ArrayList<>();
-        for (Product product : products) {
-            returnProducts.add(getProductDetails(product.getId()));
+        List<Product> lstProducts = productRepository.findAll();
+        List<ProductDTO> lstProductsDTO= new ArrayList<>();
+        for (Product product : lstProducts) {
+            lstProductsDTO.add(getProductDetails(product.getId()));
         }
-        return returnProducts;
+        return lstProductsDTO;
     }
 
     /**
@@ -102,12 +102,16 @@ public class ProductService {
         if (product == null) {
             return null;
         }
-        List<String> imageUrls = productImageRepository.findByProductId(productId).stream()
+        List<String> imageUrls = productImageRepository.findByProductId(productId)
+                .stream()
                 .map(ProductImage::getImageUrl)
                 .collect(Collectors.toList());
+        
         ProductDTO productDTO = new ProductDTO();
         BeanUtils.copyProperties(product, productDTO);
         productDTO.setImageUrls(imageUrls);
+
         return productDTO;
     }
 }
+
